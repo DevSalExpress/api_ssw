@@ -55,10 +55,15 @@ def getColetaUnicSeparate(item):
         nroPedido=item.nroPedido,
     )
 
-    # Convertendo XML para dicionário
-    response_dict = xmltodict.parse(response)
+
+    try:
+        # Convertendo XML para dicionário
+        response_dict = xmltodict.parse(response)
+        return response_dict
+
+    except:
+        print(response)
     
     # Convertendo dicionário para JSON
     response_json = json.dumps(response_dict)
     
-    return response_dict
